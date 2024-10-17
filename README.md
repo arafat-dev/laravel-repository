@@ -5,9 +5,9 @@
 <a href="https://packagist.org/packages/arafat69/laravel-repository">
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/arafat69/laravel-repository">
 </a>
-<a href="https://packagist.org/packages/arafat69/laravel-repository"><img src="https://img.shields.io/packagist/dt/arafat69/laravel-repository" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/arafat69/laravel-repository"><img src="https://img.shields.io/packagist/v/arafat69/laravel-repository" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/arafat69/laravel-repository"><img src="https://img.shields.io/packagist/l/arafat69/laravel-repository" alt="License"></a>
+<a href="https://packagist.org/packages/arafat-dev/laravel-repository"><img src="https://img.shields.io/packagist/dt/arafat69/laravel-repository" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/arafat-dev/laravel-repository"><img src="https://img.shields.io/packagist/v/arafat69/laravel-repository" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/arafat-dev/laravel-repository"><img src="https://img.shields.io/packagist/l/arafat69/laravel-repository" alt="License"></a>
 </p>
 
 # laravel-repository
@@ -18,7 +18,7 @@ Simple but powerfull laravel repository pattern
 ## Installation
 
 ```sh
-composer require arafat69/laravel-repository
+composer require arafat-dev/laravel-repository
 ```
 
 After installing the package you will see a file **repository.php** is created inside **repositories** folder
