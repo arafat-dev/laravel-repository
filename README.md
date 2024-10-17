@@ -18,7 +18,7 @@ Simple but powerfull laravel repository pattern
 ## Installation
 
 ```sh
-composer require arafat-dev/laravel-repository
+composer require arafat69/laravel-repository
 ```
 
 After installing the package you will see a file **repository.php** is created inside **repositories** folder
