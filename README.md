@@ -10,7 +10,7 @@
 <a href="https://packagist.org/packages/arafat-dev/laravel-repository"><img src="https://img.shields.io/packagist/l/arafat69/laravel-repository" alt="License"></a>
 </p>
 
-# laravel-repository
+# Laravel-Repository
 Simple but powerfull laravel repository pattern
 
 ---
