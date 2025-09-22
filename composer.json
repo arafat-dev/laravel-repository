@@ -7,7 +7,7 @@
         "arafat",
         "laravel-repository"
     ],
-    "homepage": "https://github.com/arafat69/laravel-repository",
+    "homepage": "https://github.com/arafat-dev/laravel-repository",
     "license": "MIT",
     "autoload": {
         "psr-4": {
