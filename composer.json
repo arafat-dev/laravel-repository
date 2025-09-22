@@ -1,11 +1,22 @@
 {
     "name": "arafat69/laravel-repository",
-    "description": "simple laravel repository pattern",
+    "description": "Laravel Repository Pattern package with built-in Artisan commands. Easily create repositories, follow clean architecture, and simplify database interactions.",
     "keywords": [
-        "repository",
         "laravel",
-        "arafat",
-        "laravel-repository"
+        "laravel package",
+        "laravel repository",
+        "repository pattern",
+        "repository generator",
+        "laravel repository pattern",
+        "laravel repository generator",
+        "artisan command",
+        "laravel artisan",
+        "laravel code generator",
+        "design patterns",
+        "laravel design pattern",
+        "clean architecture",
+        "service repository pattern",
+        "php repository pattern"
     ],
     "homepage": "https://github.com/arafat-dev/laravel-repository",
     "license": "MIT",
@@ -16,11 +27,15 @@
     },
     "authors": [
         {
-            "name": "arafat69",
-            "email": "arafataliar69@gmail.com"
+            "name": "Arafat Ali",
+            "email": "arafatali.dev@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php": ">=7.3",
+        "illuminate/support": ">=7.0",
+        "illuminate/console": ">=7.0"
+    },
     "extra": {
         "laravel": {
             "providers": [

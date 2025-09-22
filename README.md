@@ -1,98 +1,265 @@
 <p>
 <a href="https://packagist.org/packages/arafat69/laravel-repository">
-<img alt="Packagist Stars" src="https://img.shields.io/packagist/stars/arafat69/laravel-repository">
+    <img alt="Packagist Stars" src="https://img.shields.io/packagist/stars/arafat69/laravel-repository">
 </a>
-<a href="https://packagist.org/packages/arafat69/laravel-repository">
+<a href="https://github.com/arafat69/laravel-repository/issues">
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/arafat69/laravel-repository">
 </a>
-<a href="https://packagist.org/packages/arafat-dev/laravel-repository"><img src="https://img.shields.io/packagist/dt/arafat69/laravel-repository" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/arafat-dev/laravel-repository"><img src="https://img.shields.io/packagist/v/arafat69/laravel-repository" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/arafat-dev/laravel-repository"><img src="https://img.shields.io/packagist/l/arafat69/laravel-repository" alt="License"></a>
+<a href="https://packagist.org/packages/arafat69/laravel-repository">
+    <img src="https://img.shields.io/packagist/dt/arafat69/laravel-repository" alt="Total Downloads">
+</a>
+<a href="https://packagist.org/packages/arafat69/laravel-repository">
+    <img src="https://img.shields.io/packagist/v/arafat69/laravel-repository" alt="Latest Stable Version">
+</a>
+<a href="https://packagist.org/packages/arafat69/laravel-repository">
+    <img src="https://img.shields.io/packagist/l/arafat69/laravel-repository" alt="License">
+</a>
 </p>
 
-# Laravel-Repository
-Simple but powerfull laravel repository pattern
+# Laravel Repository
+
+A simple, lightweight, and powerful Laravel repository pattern package with built-in **Artisan commands** for generating repositories quickly.  
+Supports **Laravel 7 and above**.
+
+---
+
+## Features
+
+- Generate repositories using Artisan commands
+- Supports **model-specific repositories**
+- Clean, maintainable code following **repository pattern**
+- Easy CRUD operations in repositories
+- Supports all Laravel versions from **7+**
+- Optional stubs publishing for customization
 
 ---
 
 ## Installation
 
-```sh
+```bash
 composer require arafat69/laravel-repository
 ```
 
-After installing the package you will see a file **repository.php** is created inside **repositories** folder
+After installing, a repository.php file will be created in your Repositories folder.
 
-##Make a repository
+---
 
-```php
+## Generating a Repository
+
+```bash
 php artisan make:repository UserRepository
-or
+```
+
+With a model:
 // use scope for specific model
+
+```bash
 php artisan make:repository UserRepository --model=User
 ```
 
-## How to create function in repository
+---
+
+## Defining Functions in Repository
 
 ```php
-//Create
+
+// Create a new record
 public static function storeByRequest($request): User
 {
     return self::create([
         'first_name' => $request->first_name,
         'last_name' => $request->last_name,
         'email' => $request->email,
-        // ...
+        'phone' => $request->phone,
+        //...
     ]);
 }
 
-// Update
+// Update existing record
 public static function updateByRequest($request, User $user): User
 {
-    self::update($user, [
+    $user->update([
         'first_name' => $request->first_name,
         'last_name' => $request->last_name,
         'email' => $request->email,
-        // ...
+        'phone' => $request->phone,
+        //...
     ]);
-
-    // or
-
-    $user->update([
-        // your update data
-    ])
 
     return $user;
 }
-// etc...
-```
-## Use from controller
 
-#### Import first the Repository
+```
+
+---
+
+## Repository Function Examples
 
 ```php
-//example UserRepository
+
+namespace App\Repositories;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use Arafat\LaravelRepository\Repository;
+
+class UserRepository extends Repository
+{
+    /**
+     * base method
+     *
+     * @method model()
+    */
+    public static function model()
+    {
+        return User::class;
+    }
+
+    /**
+     * Create a new record from request
+     */
+    public static function storeByRequest(Request $request): User
+    {
+        return self::create([
+            'first_name' => $request->first_name,
+            'last_name'  => $request->last_name,
+            'email'      => $request->email,
+            'phone'      => $request->phone,
+            // add other fields here
+        ]);
+    }
+
+    /**
+     * Update an existing record
+     */
+    public static function updateByRequest(Request $request, User $user): User
+    {
+        $user->update([
+            'first_name' => $request->first_name,
+            'last_name'  => $request->last_name,
+            'email'      => $request->email,
+            'phone'      => $request->phone,
+            // add other fields here
+        ]);
+
+        return $user;
+    }
+
+    /**
+     * Update the logged-in user's profile
+     */
+    public static function profileUpdate(Request $request): User
+    {
+        $user = auth()->user();
+        $user->update($request->only(['first_name', 'last_name', 'email', 'phone']));
+        return $user;
+    }
+
+    /**
+     * Get order summary for a user
+     */
+    public static function orderSummary(User $user)
+    {
+        return $user->orders()
+                    ->selectRaw('count(*) as total_orders, sum(total) as total_amount')
+                    ->first();
+    }
+
+    /**
+     * Get all active users
+     */
+    public static function getActiveUsers()
+    {
+        return self::query()->where('status', true)->get();
+    }
+
+    /**
+     * Delete a user
+     */
+    public static function deleteUser(User $user): bool
+    {
+        return $user->delete();
+    }
+}
+
+```
+
+---
+
+## Using Repository in Controller
+
+```php
+
 use App\Repositories\UserRepository;
-```
-```php
-// get all user
-UserRepository::getAll(); //retun all users
-// filter user use query
-UserRepository::query()->whereName('jon')->get();
-// store method call 
+
+
+// --- Custom repository methods ---
+
+// Store user
 UserRepository::storeByRequest($request);
-// update method call 
-UserRepository::updateByRequest($request, $user);
-//find
-UserRepository::find($userID);
-//get first recode
-UserRepository::first();
-// delete recode
+
+// Update a user
+$user = UserRepository::updateByRequest($request, $user);
+
+// Update current logged-in user's profile
+$currentUser = UserRepository::profileUpdate($request);
+
+// Get order summary
+$orderSummary = UserRepository::orderSummary($user);
+
+// Get all active users
+$activeUsers = UserRepository::getActiveUsers();
+
+// Delete a user
+UserRepository::deleteUser($user);
+
+// --- Built-in repository methods (from the base repository) ---
+
+// Get all users
+$users = UserRepository::getAll();
+
+// Query users with conditions
+$users = UserRepository::query()->where('name','Jon')->get();
+
+// Find a specific user by ID
+$user = UserRepository::find($userID);
+
+// Get the first record
+$user = UserRepository::first();
+
+// Delete a user by ID
 UserRepository::delete($userID);
+
 ```
-#### Publish stubs folder
-```sh
+
+---
+
+### Publishing Stubs
+
+```bash
 php artisan vendor:publish --tag=stubs
 ```
+
+---
+
 ## Contribution
-You're open to create any Pull request.
+
+Feel free to open Pull Requests or submit issues.
+Contributions are welcome!
+
+---
+
+## License
+
+MIT
+
+---
+
+## Changelog v2.0.0
+
+- Minimum PHP requirement updated to 7.3
+- Laravel support updated to 7 and above
+- Artisan repository generator improved with interactive output
+- Composer keywords and description updated for better search visibility
+- Stubs publishing for customization added
+- Cleaned up examples and documentation
