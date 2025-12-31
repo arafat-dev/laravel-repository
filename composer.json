@@ -1,5 +1,5 @@
 {
-    "name": "arafat69/laravel-repository",
+    "name": "arafatdev/laravel-repository",
     "description": "Laravel Repository Pattern package with built-in Artisan commands. Easily create repositories, follow clean architecture, and simplify database interactions.",
     "keywords": [
         "laravel",
