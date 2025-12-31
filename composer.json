@@ -39,6 +39,9 @@
     "suggest": {
       "arafatdev/laravel-repository": "Alternative repository implementation or legacy package name"
     },
+    "replace": {
+      "arafat69/laravel-repository": "self.version"
+    },
     "extra": {
         "laravel": {
             "providers": [
