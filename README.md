@@ -18,7 +18,7 @@
 
 # Laravel Repository
 
-A simple, lightweight, and powerful Laravel repository pattern package with built-in **Artisan commands** for generating repositories quickly.  
+A simple, lightweight, and powerful Laravel repository pattern package with built-in **Artisan commands** for generating repositories quickly.
 Supports **Laravel 7 and above**.
 
 ---
@@ -255,11 +255,7 @@ MIT
 
 ---
 
-## Changelog v2.0.0
+## Changelog v2.1.0
 
-- Minimum PHP requirement updated to 7.3
-- Laravel support updated to 7 and above
-- Artisan repository generator improved with interactive output
-- Composer keywords and description updated for better search visibility
-- Stubs publishing for customization added
-- Cleaned up examples and documentation
+- This package is Abandone.
+- Suggest: arafatdev/laravel-repository.
