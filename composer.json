@@ -37,7 +37,7 @@
         "illuminate/console": ">=7.0"
     },
     "replace": {
-      "arafat69/laravel-repository": "self.version"
+      "arafat69/laravel-repository": "^1.0|^2.0"
     },
     "extra": {
         "laravel": {
