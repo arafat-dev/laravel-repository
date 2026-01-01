@@ -2,7 +2,7 @@
 <a href="https://packagist.org/packages/arafatdev/laravel-repository">
     <img alt="Packagist Stars" src="https://img.shields.io/packagist/stars/arafatdev/laravel-repository">
 </a>
-<a href="https://github.com/arafatdev/laravel-repository/issues">
+<a href="https://github.com/arafat-dev/laravel-repository/issues">
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/arafatdev/laravel-repository">
 </a>
 <a href="https://packagist.org/packages/arafatdev/laravel-repository">

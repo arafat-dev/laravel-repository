@@ -36,9 +36,6 @@
         "illuminate/support": ">=7.0",
         "illuminate/console": ">=7.0"
     },
-    "suggest": {
-      "arafatdev/laravel-repository": "Alternative repository implementation or legacy package name"
-    },
     "replace": {
       "arafat69/laravel-repository": "self.version"
     },
@@ -51,5 +48,7 @@
                 "Repository": "Arafat\\LaravelRepository\\RepositoryFacade"
             }
         }
-    }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
