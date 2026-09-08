@@ -5,7 +5,7 @@
 <a href="https://github.com/arafat-dev/laravel-repository/issues">
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/arafatdev/laravel-repository">
 </a>
-<a href="https://packagist.org/packages/arafatdev/laravel-repository">
+<a href="https://packagist.org/packages/arafat69/laravel-repository">
     <img src="https://img.shields.io/packagist/dt/arafatdev/laravel-repository" alt="Total Downloads">
 </a>
 <a href="https://packagist.org/packages/arafatdev/laravel-repository">
